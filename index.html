@@ -1,5 +1,69 @@
 <!DOCTYPE html>
-<html>
-<head><title>Mr E - Boutique & Admin</title></head>
-<body><h1>Dashboard Boutique & Administration Mr E</h1></body>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr E LIVRÉ & TRANSPORT - Lomé</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: #f8fafc; color: #0f172a; }
+    header { background: #1e3a8a; color: white; padding: 1.5rem; text-align: center; }
+    .hero { background: #2563eb; color: white; padding: 3rem 1.5rem; text-align: center; }
+    .hero h1 { margin: 0 0 10px 0; font-size: 2.2rem; }
+    .hero p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 20px; }
+    .download-btns { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+    .btn-download { background: #10b981; color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .btn-download:hover { background: #059669; }
+    .btn-admin { background: #f59e0b; color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 16px; }
+    .container { max-width: 1100px; margin: auto; padding: 2rem 1.5rem; }
+    .card { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 2rem; }
+    #map { height: 380px; border-radius: 10px; margin-top: 1rem; border: 1px solid #cbd5e1; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>📦 Mr E LIVRÉ &amp; TRANSPORT</h2>
+</header>
+
+<section class="hero">
+  <h1>La solution complète de livraison &amp; transport à Lomé</h1>
+  <p>Commandez vos produits en ligne, réservez vos courses et faites-vous livrer en toute sécurité.</p>
+  
+  <div class="download-btns">
+    <!-- Liens de téléchargement des APKs générés -->
+    <a href="https://github.com/elawscomediclub-source/mrelivre_db/actions" class="btn-download" target="_blank">
+      📲 Télécharger App Client (.APK)
+    </a>
+    <a href="https://github.com/elawscomediclub-source/mrelivre_db/actions" class="btn-download" style="background:#2563eb;" target="_blank">
+      🛵 Télécharger App Livreur (.APK)
+    </a>
+    <a href="app_3_boutique_admin/web/index.html" class="btn-admin">
+      🏢 Espace Admin &amp; Boutique
+    </a>
+  </div>
+</section>
+
+<div class="container">
+  <div class="card">
+    <h3>🗺️ Explorer les Boutiques Partenaires à Lomé</h3>
+    <p style="color:#64748b;">Découvrez les commerces inscrits sur le réseau Mr E et leurs articles disponibles.</p>
+    <div id="map"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+  const map = L.map('map').setView([6.1372, 1.2125], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
+
+  L.marker([6.1372, 1.2125]).addTo(map)
+    .bindPopup('<b>Boutique Assivito Tech</b><br>• Casque Moto: 15,000 FCFA<br>• Support Phone: 5,000 FCFA');
+
+  L.marker([6.1450, 1.2180]).addTo(map)
+    .bindPopup('<b>Alimentation Tokoin</b><br>• Sac de Riz 5kg: 4,500 FCFA<br>• Huile 1L: 1,200 FCFA');
+
+  setTimeout(() => { map.invalidateSize(); }, 300);
+</script>
+</body>
 </html>
